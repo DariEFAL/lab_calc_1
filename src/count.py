@@ -2,15 +2,15 @@ from src.cheks import is_op, is_number, is_int
 from src.calculate_error import CalcError
 
 
-def count_rpn(expr=list[str, float]) -> float | None:
+def count_rpn(expr=list[str | float]) -> float | None:
     """
     Вычесляет результат выражения в RPN
     :param expr: Список токенов в постфиксной записи
     :return: Возвращает результат выражения или None
     """
 
-    stack = []
-    
+    stack: list[float] = []
+
     for token in expr:
         if is_number(token):
             stack.append(token)

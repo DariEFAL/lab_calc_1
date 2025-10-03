@@ -3,7 +3,7 @@ import re
 from src.correct import correct_expr, correct_point
 
 
-def get_token(expr_str=str) -> list[str] | None: 
+def get_token(expr_str=str) -> list[str] | None:
     """
     Токенизатор
     :param expr_str: Выражение
@@ -11,13 +11,13 @@ def get_token(expr_str=str) -> list[str] | None:
     """
 
     expr_str = expr_str.replace(',', '.')
-    expr_str = re.sub(r"\s*", "", expr_str) 
+    expr_str = re.sub(r"\s*", "", expr_str)
 
     if not correct_expr(expr_str):
         return None
 
     token_re = re.compile(r"""(\d+(?:\.\d+)? | \*\* | // | [+\-/%*().])""", re.VERBOSE)
-    result = []
+    result: list[str] = []
     buffer = ""
     tokens = re.findall(token_re, expr_str)
 
@@ -42,5 +42,5 @@ def get_token(expr_str=str) -> list[str] | None:
                 buffer = ""
             else:
                 result.append(tokens[index])
-                
+
     return result

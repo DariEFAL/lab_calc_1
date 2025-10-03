@@ -2,15 +2,15 @@ from src.cheks import is_number, is_op
 from src.constants import OP_PRIO
 
 
-def shunting_yard(expr=list[str]) -> list[str, float]: 
+def shunting_yard(expr=list[str]) -> list[str | float]:
     """
     Алгоритм шунтирующего двора со скобками
     :param expr: Список токенов в инфиксной записи
     :return: Возвращает список токенов в постфиксной записи
     """
 
-    result = []
-    op_stack = []
+    result: list[str | float] = []
+    op_stack: list[str] = []
 
     for token in expr:
         if is_number(token):
@@ -28,8 +28,8 @@ def shunting_yard(expr=list[str]) -> list[str, float]:
             while op_stack[-1] != '(':
                 result.append(op_stack.pop())
             op_stack.pop()
-        
+
     while op_stack:
         result.append(op_stack.pop())
-    
+
     return result

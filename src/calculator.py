@@ -11,7 +11,7 @@ def calc(expr_str=str) -> None:
     """
 
     tokens = get_token(expr_str)
-    if tokens == None:
+    if tokens is None:
         return None
     print("tokens:", tokens)
 
@@ -19,6 +19,6 @@ def calc(expr_str=str) -> None:
     print("rpn_tokens:", rpn_tokens)
 
     result = count_rpn(rpn_tokens)
-    if result == None:
+    if result is None:
         return None
     print("Результат:", result)

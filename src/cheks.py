@@ -33,5 +33,5 @@ def is_op(token=str) -> bool:
     :param token: Токен
     :return: Возвращает либо True, либо False
     """
-    
+
     return token in OP_PRIO
