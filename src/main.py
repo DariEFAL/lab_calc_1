@@ -11,7 +11,7 @@ def main() -> None:
 
     for line in sys.stdin:
         if line.rstrip() == "exit":
-            return None
+            sys.exit(0)
         calc(line)
 
 
