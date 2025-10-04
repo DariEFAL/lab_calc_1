@@ -21,7 +21,7 @@ def correct_expr(expr_str=str) -> bool:
         if expr_str.count('(') != expr_str.count(')'):
             raise CalcError
     except CalcError:
-        print("Ошибка: Скобка без пары")
+        print("Ошибка: Неправильное использование скобок")
         return False
 
     try:

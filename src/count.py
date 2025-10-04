@@ -2,14 +2,14 @@ from src.cheks import is_op, is_number, is_int
 from src.calculate_error import CalcError
 
 
-def count_rpn(expr=list[str | float]) -> float | None:
+def count_rpn(expr=list[str | float | int]) -> float | int | None:
     """
     Вычесляет результат выражения в RPN
     :param expr: Список токенов в постфиксной записи
     :return: Возвращает результат выражения или None
     """
 
-    stack: list[float] = []
+    stack: list[float | int] = []
 
     for token in expr:
         if is_number(token):
@@ -43,7 +43,7 @@ def count_rpn(expr=list[str | float]) -> float | None:
                 case '//':
                     try:
                         if is_int(op1) and is_int(op2):
-                            stack.append(op1 // op2)
+                            stack.append(int(op1 // op2))
                         else:
                             raise CalcError
                     except ZeroDivisionError:
@@ -56,7 +56,7 @@ def count_rpn(expr=list[str | float]) -> float | None:
                 case '%':
                     try:
                         if is_int(op1) and is_int(op2):
-                            stack.append(op1 % op2)
+                            stack.append(int(op1 % op2))
                         else:
                             raise CalcError
                     except ZeroDivisionError:
@@ -81,9 +81,9 @@ def count_rpn(expr=list[str | float]) -> float | None:
 
     try:
         if len(stack) == 1:
-            return float(stack.pop())
+            return stack.pop()
         else:
             raise CalcError
     except CalcError:
-        print("Ошибка: неправильный ввод")
+        print("Ошибка: Неправильный ввод")
         return None

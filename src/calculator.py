@@ -3,7 +3,7 @@ from src.shunting_yard import shunting_yard
 from src.count import count_rpn
 
 
-def calc(expr_str=str) -> None:
+def calc(expr_str=str) -> float | int | None:
     """
     Вызывает функции для вычесления выражения
     :param expr_str: Выражение
@@ -21,4 +21,5 @@ def calc(expr_str=str) -> None:
     result = count_rpn(rpn_tokens)
     if result is None:
         return None
-    print("Результат:", result)
+
+    return result

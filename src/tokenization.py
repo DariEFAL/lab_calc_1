@@ -18,7 +18,7 @@ def get_token(expr_str=str) -> list[str] | None:
 
     token_re = re.compile(r"""(\d+(?:\.\d+)? | \*\* | // | [+\-/%*().])""", re.VERBOSE)
     result: list[str] = []
-    buffer = ""
+    unary_sign = ""
     tokens = re.findall(token_re, expr_str)
 
     if not correct_point(tokens):
@@ -31,15 +31,15 @@ def get_token(expr_str=str) -> list[str] | None:
                     result.append('0')
                     result.append(tokens[index])
                 else:
-                    buffer = tokens[index]
+                    unary_sign = tokens[index]
             except Exception:
                 print("Ошибка: Неправильный ввод")
                 return None
 
         else:
-            if buffer:
-                result.append(buffer + tokens[index])
-                buffer = ""
+            if unary_sign:
+                result.append(unary_sign + tokens[index])
+                unary_sign = ""
             else:
                 result.append(tokens[index])
 

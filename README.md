@@ -1,11 +1,17 @@
 # Лаба 1: Калькулятор (Вариант M2)
 
 ## Запуск программы
-```bash
-$ uv venv
-$ .venv\Scripts\activate
+```powershell
+ git clone https://github.com/DariEFAL/lab_calc_1.git
+ cd lab_calc_1
+ uv venv
+ .venv\Scripts\activate
 (Для Linux: source .venv/bin/activate)
-$ python -m src.main
+ python -m src.main
+```
+## Запуск тестов
+```powershell
+pytest tests/tests_calc.py
 ```
 
 ## Формат ввода
@@ -32,10 +38,8 @@ $ python -m src.main
 * 0 \*\* 0 = 1
 * Разрешены ведущие нули
 * (-2) ** 0.5 -> будет ошибка. Нельзя взять корень из отрицательного числа
-* "", "   ", "+" - ошибка
-* 1 -> 1.0
-* 2\*\*3\*\*2 = 64 - Выполняться слева на право.
-  Для получение другого результата надо написать в скобках: 2\*\*(3\*\*2) = 512
+* ""; "   "; "+" - ошибка
+* 2\*\*3\*\*2 = 512 - Выполняеться справа на лево
 
 ## Алгоритм
 main() - считывает строки и вызывает calculator()

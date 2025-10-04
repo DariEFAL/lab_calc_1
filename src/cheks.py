@@ -15,7 +15,7 @@ def is_number(token=str) -> bool:
         return False
 
 
-def is_int(op=float) -> int:
+def is_int(op=float | int | str) -> bool:
     """
     Проверяет является ли число целым для целочисленных операций (//, %)
     :param op: операнд
