@@ -13,10 +13,8 @@ def calc(expr_str=str) -> float | int | None:
     tokens = get_token(expr_str)
     if tokens is None:
         return None
-    print("tokens:", tokens)
 
     rpn_tokens = shunting_yard(tokens)
-    print("rpn_tokens:", rpn_tokens)
 
     result = count_rpn(rpn_tokens)
     if result is None:
