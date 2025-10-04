@@ -19,12 +19,12 @@ def get_token(expr_str=str) -> list[str] | None:
     token_re = re.compile(r"""(\d+(?:\.\d+)? | \*\* | // | [+\-/%*().])""", re.VERBOSE)
     result: list[str] = []
     unary_sign = ""
-    tokens = re.findall(token_re, expr_str)
+    tokens = re.findall(token_re, expr_str) #Разделение на токены
 
     if not correct_point(tokens):
         return None
 
-    for index in range(len(tokens)):
+    for index in range(len(tokens)): #Цикл для нахождения унарных знаков
         if tokens[index] in ('-', '+') and (not result or result[-1] == '('):
             try:
                 if tokens[index+1] == '(':

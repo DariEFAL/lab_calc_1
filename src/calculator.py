@@ -7,7 +7,7 @@ def calc(expr_str=str) -> float | int | None:
     """
     Вызывает функции для вычесления выражения
     :param expr_str: Выражение
-    :return: ничего не возвращает
+    :return: Возвращает ответ или ничего
     """
 
     tokens = get_token(expr_str)

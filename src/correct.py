@@ -11,7 +11,7 @@ def correct_expr(expr_str=str) -> bool:
     """
 
     try:
-        if not re.match(r"^[\d+\-/%*.()]+$", expr_str):
+        if not re.match(r"^[\d+\-/%*.()]+$", expr_str): #Проверка на использование правильных символов
             raise CalcError
     except CalcError:
         print("Ошибка: Неправильный ввод")
@@ -25,18 +25,18 @@ def correct_expr(expr_str=str) -> bool:
         return False
 
     try:
-        if re.findall(r"\((?:\*\*|//|[+\-/%*])\)", expr_str) or \
-           re.findall(r"\(\d+(?:\.\d+)?(?:\*\*|//|[+\-/%*])\)", expr_str) or \
-           re.findall(r"\d+(?:\.\d+)?\((?:\*\*|//|[+\-/%*])\d+(?:\.\d+)?\)", expr_str):
+        if (re.findall(r"\((?:\*\*|//|[+\-/%*])\)", expr_str) or #Проверка на (+)
+           re.findall(r"\(\d+(?:\.\d+)?(?:\*\*|//|[+\-/%*])\)", expr_str) or #Проверка на (1+)
+           re.findall(r"\d+(?:\.\d+)?\((?:\*\*|//|[+\-/%*])\d+(?:\.\d+)?\)", expr_str)): #Проверка на 1(+1)
             raise CalcError
     except CalcError:
         print("Ошибка: Неправильное использование скобок")
         return False
 
     try:
-        if re.findall(r"[+\-%][+\-%]+", expr_str) or \
-           re.findall(r"(?:\*\*|//)[*/+\-%]+|[*/+\-%]+(?:\*\*|//)", expr_str) or \
-           re.findall(r"[*/][+\-%]+|[+\-%]+[*/]", expr_str):
+        if (re.findall(r"[+\-%][+\-%]+", expr_str) or #Проверка на %%
+           re.findall(r"(?:\*\*|//)[*/+\-%]+|[*/+\-%]+(?:\*\*|//)", expr_str) or #Проверка на **+ ил +**
+           re.findall(r"[*/][+\-%]+|[+\-%]+[*/]", expr_str)): #Проверка на *+ или +*
             raise CalcError
     except CalcError:
         print("Ошибка: Несколько оператора подряд")
